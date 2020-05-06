@@ -1,0 +1,27 @@
+.feed-form{
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 300px;
+    &:first-child{
+        margin-top: 0;
+    }
+    input{
+        width: 100%;
+        margin-top: 15px;
+        border: none;
+        height: 50px;
+        border-radius: 5px;
+        background-color: #ffffff;
+        padding: 0 20px;
+        color: #4b4b4b;
+        font-size: 14px;
+        font-weight: 300;
+    }
+    button{
+        margin-top: 20px;
+    }
+   
+}

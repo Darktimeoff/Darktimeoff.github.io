@@ -1,0 +1,546 @@
+nav
+	margin: 0 auto
+	max-width: 1100px
+	width: 100%
+#checkbox-menu, .toggle
+		display: none
+label
+	width: 100%
+.menu
+	padding: 0
+	margin: 0
+	height: 50px
+	display: flex
+	flex-direction: row
+	justify-content: space-around
+	align-items: center
+	list-style-type: none
+	li
+		.logo
+			margin-right: 229px
+			color: $text-color
+			font-size: 25px
+			font-weight: 400
+		.contacts
+			margin-right: 56px
+		a	
+			padding: 10px 15px
+			color: $text-color
+			text-decoration: none
+			font-size: 13px
+			font-weight: 400
+			align-self: center
+			transition: background 0.2s linear
+			&:hover
+				background: $main-color
+				border-radius: 5px 	
+		.Getting_Started
+			color: $text-color
+			font-size: 13px
+			font-weight: 400
+			text-align: center
+			color: black
+.title
+	width: 576px
+	height: 140px
+	color: $text-color
+	font-size: 62px
+	font-weight: 700
+	line-height: 78px
+.search
+	margin-top: 48px
+	display: flex
+	justify-content: flex-start
+	align-items: center
+	.search_str
+		width: 481px
+		height: 71px
+		background-color: #ffffff
+		border: none
+		outline: none
+	.search_btn
+		width: 116px
+		height: 71px
+		border: none
+		background-color: $main-color
+		color: $text-color
+		font-size: 15px
+		font-weight: 500
+		outline: none
+		transition: 0.5s all
+		&:hover
+			background-color: #d3a900
+.apartment
+	height: 631px
+	.apartment_wrapper
+		position: relative
+		display: flex
+		&:first-child
+			align-items: center
+		.apartment_item
+			&:first-child
+				z-index: 10
+			.apartment_inf	
+				z-index: -2
+				margin-left: -450px
+				.appartment_img
+					display: block
+					width: 961px
+					height: 631px
+					z-index: -2
+				.apartment_contact
+					position: absolute
+					width: 591px
+					height: 81px
+					background-color: $main-color
+					display: flex
+					justify-content: space-around
+					align-items: center
+					right: 0px
+					bottom: 0px
+					.tellphone
+						display: flex
+						justify-content: space-around
+						.tellphone_numb
+							margin-left: 32px
+							text-decoration: none
+							color: $text-color
+							font-size: 18px
+							font-weight: 400
+							transition: 0.5s all
+							&:hover
+								color: white
+					.maps
+						display: flex
+						justify-content: space-around
+						.maps_addres
+							margin-left: 32px
+							text-decoration: none
+							color: $text-color
+							font-size: 18px
+							font-weight: 400
+							transition: 0.5s all
+							&:hover
+								color: white
+.title
+	margin-top: 16px
+	width: 295px
+	height: 80px
+	color: $text-color
+	font-size: 40px
+	font-weight: 400
+	line-height: 50px
+	text-align: left
+.statistics
+	min-height: 656px
+	padding: 144px 0 77px 0
+	.statistics_wrapper
+		display: flex
+		justify-content: flex-start
+		.statistics_item
+			&:last-child
+				display: flex
+				justify-content: flex-end
+				align-items: center
+				flex-wrap: wrap	
+			.statistics_discr
+				margin-top: 70px
+				width: 536px
+				height: 223px
+				color: $text-color
+				font-size: 13px
+				font-weight: 400
+				line-height: 30px
+				text-align: justify
+			.statistics_block
+				width: 201px
+				height: 201px
+				background-color: #f6f5f4
+				flex-direction: column
+				display: flex
+				justify-content: center
+				align-items: center
+				&:nth-child(2n)
+					margin-right: 66px
+					margin-left: 29px
+				&:nth-child(3)
+					margin-top: 28px
+				&:last-child	
+					margin-top: 28px
+				.block_number
+					color: $main-color
+					font-size: 40px
+					font-weight: 400
+				.block_text
+					margin-top: 21px
+					color: $text-color
+					font-size: 14px
+					font-weight: 400
+.title
+	width: 435px
+	height: 88px
+	color: $text-color
+	font-size: 38px
+	font-weight: 400
+	line-height: 50px
+	text-align: left
+.search
+	margin-top: 60px
+.rent
+	min-height: 1480px
+	background-color: #f6f5f4
+	padding: 63px 0 84px 0
+	.rent_btn
+		margin-top: 60px
+		width: 251px
+		height: 71px
+		border: none
+		background-color: #ffffff
+		color: $text-color
+		font-size: 15px
+		font-weight: 400
+		text-align: center
+		outline: none	
+		transition: 0.5s all
+		&:hover
+			background-color:	#dad6d3
+	.row
+		margin-top: 78px
+		.col-xl-4
+			&:nth-child(4)
+				margin-top: 34px
+			&:nth-child(5)
+				margin-top: 34px
+			&:nth-child(6)
+				margin-top: 34px			
+	.rent_item
+		.rent_img
+			display: block
+			width: 351px
+			height: 381px
+		.rent_discr
+			width: 351px
+			height: 120px
+			background-color: #fff
+			padding: 26px 21px 36px 23px
+			display: flex
+			flex-wrap: wrap
+			&:first-child
+				align-items: flex-start
+			.discr_addres
+				color: $text-color
+				font-size: 15px
+				font-weight: 400
+			.discr_footer
+				margin-top: 26px
+				display: flex
+				justify-content: space-around
+				align-items: center
+				.discr_price
+					color: $main-color
+					font-size: 18px
+					font-weight: 400
+					margin-right: 120px
+				.icons_shower
+					display: block
+					width: 11px
+					height: 12px
+					margin-right: 12px
+				.shower_text
+					color: #919eb1
+					font-size: 13px
+					font-weight: 400
+					text-transform: uppercase
+					margin-right: 17px
+				.icons_badroom
+					width: 18px
+					height: 12px
+					margin-right: 8px
+				.badroom_text
+					color: #919eb1
+					font-size: 13px
+					font-weight: 400
+					text-transform: uppercase
+.title
+	display: inline
+	color: $text-color
+	font-size: 40px
+	font-weight: 400
+	text-align: left
+.how_it_works
+	min-height: 1610px
+	background-color: white
+	padding: 55px 0 71px 0
+	.subtitle
+		margin-top: 36px
+		width: 357px
+		height: 73px
+		color: $text-color
+		font-size: 13px
+		font-weight: 400
+		line-height: 30px
+		text-align: justify
+	.row
+		margin-top: 70px
+		margin-bottom: 91px
+	.card_item
+		overflow: hidden
+		padding: 0 43px 50px 70px
+		width: 345px
+		height: 374px
+		position: relative
+		box-shadow: 3px 4px 15px 6px #b3b2b2
+		&:hover
+			background-color: $main-color
+		.number
+			position: absolute
+			display: block
+			font-size: 120px
+			top: -78px
+			left: -24px
+			color: $text-color
+			font-weight: 700
+		.card_text
+			margin-top: 126px
+			.card_title
+				margin: 0
+				color: $text-color
+				font-size: 18px
+				font-weight: 700
+				text-align: left
+			.card_discr
+				display: block
+				margin-top: 38px
+				width: 207px
+				height: 73px
+				color: $text-color
+				font-size: 13px
+				line-height: 30px
+				font-weight: 400
+				text-align: left	
+			.card_link
+				display: block
+				margin-top: 27px
+				color: $text-color
+				font-size: 13px
+				font-weight: 700
+				text-align: left
+			span
+				display: block
+				margin-top: 10px
+				width: 111px
+				height: 3px
+				background-color: $text-color
+	.title
+		margin-top: 91px
+		display: inline
+		color: $text-color
+		font-size: 40px
+		font-weight: 700
+		text-align: left
+	.subtitle
+		display: block
+		margin-top: 36px
+		width: 356px
+		height: 73px
+		color: $text-color
+		font-size: 12px
+		font-weight: 400
+		line-height: 30px
+		text-align: justify
+	.row
+		margin-top: 66px
+	.services_img
+		display: block
+		width: 540px
+		height: 631px
+	.services_title
+		margin-top: 63px
+		margin-bottom: 0
+		color: $text-color
+		font-size: 25px
+		font-weight: 700
+		text-align: left
+		&:first-child
+			margin-top: 0	
+	.services_discr
+		margin-top: 36px
+		width: 441px
+		height: 103px
+		color: $text-color
+		font-size: 13px
+		font-weight: 400
+		line-height: 23px
+		text-align: justify
+.title
+	color: #1f373d
+	font-family: "Montserrat - Semi Bold"
+	font-size: 40px
+	font-weight: 700
+	text-align: left
+.agents
+	min-height: 850px
+	padding: 64px 0 96px 0
+	background-color: #f6f5f4
+	.subtitle
+		margin-top: 38px
+		width: 357px
+		height: 73px
+		color: $text-color
+		font-size: 13px
+		font-weight: 400
+		line-height: 26px
+		text-align: justify
+	.row
+		margin-top: 63px
+	.agents_item
+		width: 351px
+		height: 480px
+		.item_img
+			display: block
+			width: 351px
+			height: 381px
+		.agents_contact
+			background: white
+			padding: 22px 22px 27px 23px
+			display: flex
+			justify-content: flex-start
+			flex-wrap: wrap
+			.contact_ling
+				margin-top: 26px
+				display: flex
+				justify-content: space-around
+				align-items: center
+				.agent_name
+					display: block
+					margin-right: 50px
+					color: $main-color
+					font-size: 15px
+					font-weight: 400
+				.contact_social_item
+					margin-right: 36px
+					color: $text-color
+					&:last-child
+						margin-right: 0
+.add
+	min-height: 1370px
+	padding: 88px 0 104px 0
+	.col-xl-6.offset-xl-1
+		margin-top: 90px
+	.col-xl-6.last
+		margin-top: 95px
+	.col-xl-5.offset-xl-1.last
+		margin-top: 126px
+	.col-xl-5.offset-xl-1
+		margin-top: 78px
+	.col-xl-5
+		margin-top: 155px
+	.add_btn
+		margin-top: 40px
+		display: block
+		width: 241px
+		height: 81px
+		border: none
+		background-color: $text-color
+		color: #ffffff
+		font-size: 18px
+		font-weight: 400
+		&:hover
+			background-color: #244750
+	.add_title_text
+		color: $text-color
+		font-size: 25px
+		font-weight: 700
+	.add_title_text.second
+		text-align: right
+	.add_text
+		width: 441px
+		height: 103px
+		color: $text-color
+		font-size: 13px
+		font-weight: 400
+		line-height: 27px
+		text-align: justify
+	.add_item
+		position: relative
+		.item_img
+			width: 541px
+			height: 331px
+		.maps
+			width: 336px
+			height: 81px
+			background-color: $main-color
+			display: flex
+			justify-content: space-around
+			align-items: center		
+			.maps_addres
+				margin-left: 32px
+				text-decoration: none
+				color: $text-color
+				font-size: 18px
+				font-weight: 400
+				transition: 0.5s all
+				&:hover
+					color: white
+		.maps.last
+			display: none
+		.maps.second
+			position: absolute
+			bottom: -40px
+			right: 0
+		.maps.first
+			position: absolute
+			left: 50%
+			bottom: -40px
+			transform: translateX(-50%)	
+
+
+					
+
+				
+
+
+
+
+
+
+		
+	
+
+
+
+
+	
+
+
+
+	
+
+
+							
+						
+
+
+			
+					
+										
+		
+				
+		
+
+
+
+	
+
+
+
+
+
+
+
+			
+
+		
+
+
+

@@ -1,0 +1,51 @@
+.carousel{
+	padding: 81px 0;
+	&__inner{
+		position: relative;
+		width: 750px;
+		margin: 0 auto;
+		img{
+			width: 100%;
+		}
+	}
+	.slick-prev,.slick-next{
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		left: -67px;
+		border: none;
+		background-color: #fff;
+		img{
+			width: 31px;
+			height: 50px;
+		}
+	}
+	.slick-next{
+		right: -66px;
+		left: auto;
+	}
+	.slick-dots{
+		display: flex;
+		justify-content: center;
+		list-style: none;
+		li{
+			margin-right: 10px;
+			button{
+				border: none;
+				background-color: rgb(150, 150, 150);
+				width: 8px;
+				height: 11px;
+				border-radius: 100%;
+				color: transparent;
+				outline: none;
+			}	
+		}
+	}
+}
+@media (max-width: 767px){
+	.carousel{
+		&__inner{
+			width: 100%;
+		}
+	}
+}
