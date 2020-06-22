@@ -1,0 +1,31 @@
+@import "normalize";
+@import "mixins";
+@import "variables";
+@import "header-menu";
+@import "profile";
+@import "news";
+@import "specialty";
+@import "documents";
+@import "footer";
+a{
+    cursor: pointer;
+}
+* {
+    position: relative;
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    outline: none;
+}
+address {
+    font-style: normal;
+}
+.container{
+    max-width: 1920px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 15px;
+}

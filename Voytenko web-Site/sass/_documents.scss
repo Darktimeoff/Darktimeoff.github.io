@@ -1,0 +1,98 @@
+.documents{
+    margin-top: 50px;
+    &__header{
+        font-weight: 700;
+        color: $color-brand;
+        text-align: center;
+        font-size: 45px;
+        margin-bottom: 30px;
+    }
+    &__wrapper{
+        width: 80%;
+    }
+    &__column{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    &__item{
+        margin-right: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__img{
+        display:block;
+        max-width: 30px;
+    }
+
+    &__name{
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color:$text-color-news;
+        max-width: 300px;
+        text-align: justify;
+    }
+    &__button{
+        display: block;
+        font-size: 24px;
+        margin: 0 auto;
+        margin-top: 20px;
+        color: $color-brand;
+        border: none;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.16);
+        border-radius: 36px;
+        width: 315px;
+        height: 59px;
+        background-color: $white;
+        text-align: center;
+        transition: 0.5s all;
+        &:hover {
+          background-color: $text-color-news;
+          color: $white;
+        }
+    }
+}
+@media(max-width: 1024px){
+    .documents{
+        &__name{
+            max-width: 200px;
+            font-size: 14px;
+        }
+    }
+}
+@media(max-width: 768px){
+    .documents{
+        &__wrapper{
+            width: 100%;
+        }
+        &__button{
+            &:hover{
+                color: $color-brand;
+                background: $white;
+            }
+        }
+    }
+}
+@media(max-width: 425px){
+    .documents{
+        &__column{
+            align-items: center;
+            justify-content: center;
+        }
+        &__img{
+            margin: 0 auto;
+        }
+        &__name{
+            max-width: 250px;
+        }
+        &__header{
+            font-size: 30px;
+        }
+        &__button{
+            font-size: 20px;
+            width: 284px;
+        }
+    }
+}
