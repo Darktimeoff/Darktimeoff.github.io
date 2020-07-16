@@ -51,16 +51,16 @@ const menu = document.querySelector('.menu__navigation'),
     })
   }
   function showItem(element, list, classListNm, count = 2, hideActivated = true) {
-		list = document.querySelectorAll(classListNm);
+        list = document.querySelectorAll(classListNm);
 		element.addEventListener('click', () => {
 			if(hideActivated) {
 				for(let i = 0; i < list.length; i++) {
 					list[i].style.display = '';
-				}
+                }
 				hideActivated = false;
 			} else {
 				hideItem(list, classListNm, count)
-				hideActivated = true;
+                hideActivated = true;
 			}
 		})
   }
