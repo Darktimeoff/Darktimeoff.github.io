@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "login": "Darktime",
+      "password": "Darktime123",
+      "email": "alexkorolixinofficial@gmail.com",
+      "id": 1
+    },
+    {
+      "login": "Darktime15",
+      "password": "Darktime123",
+      "email": "alexkorolixinofficial@gmail.com",
+      "id": 2
+    },
+    {
+      "login": "Superigork",
+      "password": "Superigork123",
+      "email": "alexkorolixinofficial@gmail.com",
+      "id": 3
+    }
+  ]
+}
