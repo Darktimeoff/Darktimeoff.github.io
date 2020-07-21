@@ -163,6 +163,114 @@ async function setMinPrice(products) {
 
 /***/ }),
 
+/***/ "./js/modules/cartModal.js":
+/*!*********************************!*\
+  !*** ./js/modules/cartModal.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return cart; });
+/* harmony import */ var _modals__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modals */ "./js/modules/modals.js");
+
+//@ts-check
+
+
+function cart() { 
+	const modalDialog = document.querySelector('.modal-cart').querySelector('.modal-dialog');
+	const cardsMenu = document.querySelector('.cards-menu');
+    const modalPriceTotal = document.querySelector('.modal-pricetag');
+    const cartArray = [];
+    function counterItem() {
+		modalDialog.addEventListener('click', (e) => {
+			let foodCurPrice = e.target.closest('.food-row').querySelector('.food-price');
+			let foodName = e.target.closest('.food-row').querySelector('.food-name');
+			let tempObj = cartArray.find((item, i) => {
+				if(item.title === foodName.textContent) {
+					item.i = i;
+					return item;
+				}
+			});
+			if(e.target.getAttribute('data-plus') =='') {
+				let currentCounter = e.target.previousElementSibling;
+				currentCounter.textContent = (+currentCounter.textContent)  + 1;
+				modalPriceTotal.textContent = parseInt(modalPriceTotal.textContent) + parseInt(foodCurPrice.textContent) + ' ₽';
+				if(tempObj) tempObj.count += 1; 
+			} else if(e.target.getAttribute('data-minus') =='') {
+				let currentCounter = e.target.nextElementSibling;
+				currentCounter.textContent =  (+currentCounter.textContent) - 1;
+				if(tempObj) tempObj.count -= 1; 
+				if((+currentCounter.textContent) == 0 && tempObj.count == 0) {
+					e.target.closest('.food-row').remove()
+					cartArray.splice(tempObj.i, 1);
+				};
+				modalPriceTotal.textContent = parseInt(modalPriceTotal.textContent) - parseInt(foodCurPrice.textContent) + ' ₽';
+			}
+		});
+	}
+	function getCartInf() {
+		cardsMenu.addEventListener('click', (e) => {
+			let button = e.target.closest('.button-add-cart');
+			if(button) {
+				const title = e.target.closest('.card-text').querySelector('.card-title-reg').textContent;
+				const price = button.nextElementSibling.textContent;
+				const id = button.id;
+				const food = cartArray.find((item) => {
+					return item.id === id;
+				})
+				if(food) food.count += 1;
+				else {
+					cartArray.push({
+						id,
+						title,
+						price,
+						count: 1
+					});
+				}
+				addToCart(cartArray, modalDialog, '.modal-body');
+			}
+		});
+	}
+	function renderCart(title, price, count, modalElm, parentSelector) {
+		modalElm.querySelector(parentSelector).insertAdjacentHTML('afterbegin',  `
+			<div class="food-row">
+				<span class="food-name">${title}</span>
+				<strong class="food-price">${price}</strong>
+				<div class="food-counter">
+					<button class="counter-button" data-minus>-</button>
+					<span class="counter">${count}</span>
+					<button class="counter-button" data-plus>+</button>
+				</div>
+			</div>
+		`);
+	}
+	function addToCart(cartArray, modalElm, parentSelector) {
+		modalDialog.querySelector('.modal-body').innerHTML = '';
+		let sum = 0;
+		cartArray.forEach(({id, title, price, count}) => {
+			renderCart(title, price, count, modalElm, parentSelector)
+			sum += parseInt(price) * parseInt(count);
+		});
+		modalPriceTotal.textContent = parseInt(sum) + ' ₽';
+	}
+	function clearCart(cartItemParentElm) {
+		const buttonClearCart = modalDialog.querySelector('.clear-cart');
+		buttonClearCart.addEventListener('click', () => {
+			cartItemParentElm.innerHTML = '';
+			modalPriceTotal.textContent = '0 ₽';
+			Object(_modals__WEBPACK_IMPORTED_MODULE_0__["close"])(document.querySelector('.modal-cart'), 'is-open');
+		});
+	}	
+	Object(_modals__WEBPACK_IMPORTED_MODULE_0__["default"])('.modal-cart', '.button-cart', '.close');
+	getCartInf();
+	counterItem();
+	clearCart(modalDialog.querySelector('.modal-body'));
+}
+
+/***/ }),
+
 /***/ "./js/modules/formsSignIn.js":
 /*!***********************************!*\
   !*** ./js/modules/formsSignIn.js ***!
@@ -232,7 +340,7 @@ function signIn() {
 		buttonSignUp.style.display = 'none';
 		Object(_modals__WEBPACK_IMPORTED_MODULE_1__["close"])(modalAuth, classOpen);
 		buttonAuth.style.display = 'none';
-		buttonOut.style.display = 'block';
+		buttonOut.style.display = 'flex';
 		userName.style.display = 'block';
 		userName.textContent = user;
 		statusMessage.remove();
@@ -452,11 +560,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class CardMenu{
-    constructor(name, description, price, image, parentSelector) {
+    constructor(name, description, price, image, id, parentSelector) {
         this.name = name;
         this.description = description;
         this.price = +price;
         this.image = image;
+        this.id = id;
         this.parentSelector = parentSelector;
 
     }
@@ -477,7 +586,7 @@ class CardMenu{
                 </div>
                 <!-- /.card-info -->
                 <div class="card-buttons">
-                    <button class="button button-primary button-add-cart">
+                    <button class="button button-primary button-add-cart" id=${this.id}>
                         <span class="button-card-text">В корзину</span>
                         <span class="button-cart-svg"></span>
                     </button>
@@ -520,7 +629,7 @@ function createMenuPage() {
         Object(_services_services__WEBPACK_IMPORTED_MODULE_0__["getResource"])(url)
             .then(items => {
                 items.forEach(({id, name, description, price, image}) => {
-                    new classCard(name, description, price, image, parentSelector).renderCardRestaurantsMenu();
+                    new classCard(name, description, price, image, id, parentSelector).renderCardRestaurantsMenu();
                 })
             })
     }
@@ -529,16 +638,13 @@ function createMenuPage() {
         restaurants.classList.remove('hide');
         buttonCart.style.display = '';
         menu.classList.add('hide');
-        document.querySelector('.cards-menu').querySelectorAll('.card').forEach( card => {
-            card.remove();
-        })
+        document.querySelector('.cards-menu').innerHTML = '';
     }
     function renderMenuPage(cancelRender = false) {
         containerPromo.classList.add('hide');
         restaurants.classList.add('hide');
-        buttonCart.style.display = 'block';
+        buttonCart.style.display = 'flex';
         menu.classList.remove('hide');
-        Object(_modals__WEBPACK_IMPORTED_MODULE_1__["default"])('.modal-cart', '.button-cart', '.close');
         if(cancelRender && !menu.classList.contains('hide')) cancelRenderMenuPage();
         else return;
     }
@@ -550,7 +656,6 @@ function createMenuPage() {
         }
     }
     function changeHeaderMenuPage(title, rating, price, category) {
-        const sectionHeading = menu.querySelector('.section-heading');
         const titleElm = menu.querySelector('.restaurant-title');
         const ratingElm = menu.querySelector('.rating');
         const priceElm = menu.querySelector('.price');
@@ -644,8 +749,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_cardPartners__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/cardPartners */ "./js/modules/cardPartners.js");
 /* harmony import */ var _modules_searchRestaurants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/searchRestaurants */ "./js/modules/searchRestaurants.js");
 /* harmony import */ var _modules_restaurantsMenu__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/restaurantsMenu */ "./js/modules/restaurantsMenu.js");
+/* harmony import */ var _modules_cartModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/cartModal */ "./js/modules/cartModal.js");
 
 //@ts-check
+
+
 
 
 
@@ -660,6 +768,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Object(_modules_cardPartners__WEBPACK_IMPORTED_MODULE_3__["default"])(_modules_cardPartners__WEBPACK_IMPORTED_MODULE_3__["cardPartners"], 'db/partners.json');
     Object(_modules_searchRestaurants__WEBPACK_IMPORTED_MODULE_4__["default"])();
     Object(_modules_restaurantsMenu__WEBPACK_IMPORTED_MODULE_5__["default"])();
+    Object(_modules_cartModal__WEBPACK_IMPORTED_MODULE_6__["default"])();
 });
 
 /***/ }),

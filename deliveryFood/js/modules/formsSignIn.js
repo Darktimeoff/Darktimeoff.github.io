@@ -54,7 +54,7 @@ export default function signIn() {
 		buttonSignUp.style.display = 'none';
 		close(modalAuth, classOpen);
 		buttonAuth.style.display = 'none';
-		buttonOut.style.display = 'block';
+		buttonOut.style.display = 'flex';
 		userName.style.display = 'block';
 		userName.textContent = user;
 		statusMessage.remove();

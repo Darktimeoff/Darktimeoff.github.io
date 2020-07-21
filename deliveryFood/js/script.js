@@ -7,6 +7,8 @@ import cardCreate from './modules/cardPartners';
 import {cardPartners} from './modules/cardPartners';
 import searchRestaurants from './modules/searchRestaurants';
 import createMenuPage from './modules/restaurantsMenu';
+import cart from './modules/cartModal';
+
 document.addEventListener('DOMContentLoaded', () => {
     modals('.modal-auth', '.button-auth', '.close-auth');
     signIn();
@@ -14,4 +16,5 @@ document.addEventListener('DOMContentLoaded', () => {
     cardCreate(cardPartners, 'db/partners.json');
     searchRestaurants();
     createMenuPage();
+    cart();
 });

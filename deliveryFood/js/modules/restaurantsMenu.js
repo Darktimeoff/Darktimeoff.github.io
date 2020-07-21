@@ -4,11 +4,12 @@ import {getResource} from '../services/services';
 import modals from './modals';
 
 class CardMenu{
-    constructor(name, description, price, image, parentSelector) {
+    constructor(name, description, price, image, id, parentSelector) {
         this.name = name;
         this.description = description;
         this.price = +price;
         this.image = image;
+        this.id = id;
         this.parentSelector = parentSelector;
 
     }
@@ -29,7 +30,7 @@ class CardMenu{
                 </div>
                 <!-- /.card-info -->
                 <div class="card-buttons">
-                    <button class="button button-primary button-add-cart">
+                    <button class="button button-primary button-add-cart" id=${this.id}>
                         <span class="button-card-text">В корзину</span>
                         <span class="button-cart-svg"></span>
                     </button>
@@ -72,7 +73,7 @@ export default function createMenuPage() {
         getResource(url)
             .then(items => {
                 items.forEach(({id, name, description, price, image}) => {
-                    new classCard(name, description, price, image, parentSelector).renderCardRestaurantsMenu();
+                    new classCard(name, description, price, image, id, parentSelector).renderCardRestaurantsMenu();
                 })
             })
     }
@@ -81,16 +82,13 @@ export default function createMenuPage() {
         restaurants.classList.remove('hide');
         buttonCart.style.display = '';
         menu.classList.add('hide');
-        document.querySelector('.cards-menu').querySelectorAll('.card').forEach( card => {
-            card.remove();
-        })
+        document.querySelector('.cards-menu').innerHTML = '';
     }
     function renderMenuPage(cancelRender = false) {
         containerPromo.classList.add('hide');
         restaurants.classList.add('hide');
-        buttonCart.style.display = 'block';
+        buttonCart.style.display = 'flex';
         menu.classList.remove('hide');
-        modals('.modal-cart', '.button-cart', '.close');
         if(cancelRender && !menu.classList.contains('hide')) cancelRenderMenuPage();
         else return;
     }
@@ -102,7 +100,6 @@ export default function createMenuPage() {
         }
     }
     function changeHeaderMenuPage(title, rating, price, category) {
-        const sectionHeading = menu.querySelector('.section-heading');
         const titleElm = menu.querySelector('.restaurant-title');
         const ratingElm = menu.querySelector('.rating');
         const priceElm = menu.querySelector('.price');
