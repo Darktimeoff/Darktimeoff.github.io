@@ -85,6 +85,7 @@ export default function cart() {
 			cartItemParentElm.innerHTML = '';
 			modalPriceTotal.textContent = '0 ₽';
 			close(document.querySelector('.modal-cart'), 'is-open');
+			cartArray.splice(0);
 		});
 	}	
 	modals('.modal-cart', '.button-cart', '.close');

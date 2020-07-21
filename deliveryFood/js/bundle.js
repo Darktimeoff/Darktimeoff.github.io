@@ -261,6 +261,7 @@ function cart() {
 			cartItemParentElm.innerHTML = '';
 			modalPriceTotal.textContent = '0 ₽';
 			Object(_modals__WEBPACK_IMPORTED_MODULE_0__["close"])(document.querySelector('.modal-cart'), 'is-open');
+			cartArray.splice(0);
 		});
 	}	
 	Object(_modals__WEBPACK_IMPORTED_MODULE_0__["default"])('.modal-cart', '.button-cart', '.close');
